@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+
+  test:
+    container_name: "temperature_api-test"
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    expose:
+      - 80
+    entrypoint: ["bash", "-c", "pytest --verbose --junitxml=test-results/junitxml/test_results.xml ./tests/api_test"]
